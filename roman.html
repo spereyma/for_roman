@@ -1,24 +1,48 @@
 <!DOCTYPE html>  
 <html>
 <head>
-	<title>chat_e1t</title>
+	<title>attempts roman</title>
     <meta charset="UTF-8" />
-    <style>
-     	
-    </style>	
-    <script src='../../../jquery-2.1.1.min.js'></script>
-    <script src='../../../debug.js'></script>
+<style>
+  .container{border:1px solid black; width:300px; height:300px;}
+  .box{ width:10px; height:10px;float:left;padding:45px;}     	
+</style>	
+<script src='jquery-2.1.1.min.js'></script>
+<script src='debug.js'></script>
 
 <script>
+var field=[0,0,0,0,2,0,0,0,0];
 $(function()                                                           
-{      
-
+{ 
+	$('.box').filter( ":odd" ).css( "background-color",  '#eee' ); 
+    $(".box").each(function(i){    $(this).click(function(e){ eventHandler(i); });     });   
+    repaint(); 
 });
+function eventHandler(num){$('#texto').text(num); field[num]=1; repaint(); };
+function repaint()
+{	
+	$('.box').each(function(i)
+	{
+		if(field[i]===1)$(this).text('0');
+		else if(field[i]===2)$(this).text('x');
+			 else $(this).text(' ');
+	});
+}
 </script>
 </head>
 
 <body>
-      
-<div id='texto'>---</div>
+<div class='container'>
+    <div class='box'> </div>
+    <div class='box'> </div>    
+    <div class='box'> </div>    
+    <div class='box'> </div>
+    <div class='box'> </div>     
+    <div class='box'> </div>
+    <div class='box'> </div>    
+    <div class='box'> </div>
+    <div class='box'> </div>         	
+</div>     
+<div id='texto'>-----</div>
 </body>
 </html>
